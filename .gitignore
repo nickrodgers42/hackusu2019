@@ -9,3 +9,4 @@ expressions
 *.tgz
 *.zip
 __MACOSX/
+additionalImages/

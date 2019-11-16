@@ -56,6 +56,21 @@ def load_image_data():
             emotion_array = [0 for _ in range(8)]
             emotion_array[emotion] += 1
             emotion_labels.extend([emotion_array for _ in range(len(images))])
+    for dirName in os.listdir('./additionalImages'):
+        # for fileName in os.listdir(os.path.join('additionalImages', dirName)):
+        emotion_array = [0 for _ in range(8)]
+        if (dirName == 'happy'):
+            emotion_array[5] += 1
+        elif(dirName == 'sad'):
+            emotion_array[6] += 1
+        elif(dirName == 'angry'):
+            emotion_array[1] += 1
+        else:
+            emotion_array[4] += 1
+        images = readImages(os.path.join('./additionalImages', dirName), os.listdir(os.path.join('additionalImages', dirName)))
+        emotion_images.extend(images)
+        emotion_labels.extend([emotion_array for _ in range(len(images))])                 
+
     return (emotion_images, emotion_labels)
 
 def shuffleAndSplitData(images, labels):
@@ -120,7 +135,7 @@ def train_emotion_convnet():
     )
     acc = evaluate_net(MODEL, validImages, validLabels)
     print('Validation accuracy = ' + str(acc))
-    save_path = './convnets/EmotionConvnet.tfl'
+    save_path = './convnets/EmotionConvnet2.tfl'
     MODEL.save(save_path)
 
 def build_emotion_convent():
@@ -183,7 +198,7 @@ if __name__ == '__main__':
     # train_emotion_convnet()
 
     tf.reset_default_graph()
-    model = load_emotion_convnet('./convnets/EmotionConvnet.tfl')
+    model = load_emotion_convnet('./convnets/EmotionConvnet2.tfl')
     sys.stdout.flush()
     if (len(sys.argv) > 1):
         filePath = sys.argv[1]
