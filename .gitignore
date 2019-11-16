@@ -1,0 +1,11 @@
+cohn-kanade-images
+Emotion/
+Landmarks/
+FACS/
+Emotion_labels.zip
+FACS_labels.zip
+Landmarks.zip
+expressions
+*.tgz
+*.zip
+__MACOSX/

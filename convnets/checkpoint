@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/nick/Documents/expressions/convnets/EmotionConvnet.tfl"
+all_model_checkpoint_paths: "/home/nick/Documents/expressions/convnets/EmotionConvnet.tfl"
